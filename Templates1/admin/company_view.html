@@ -1,0 +1,25 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid">
+<div class="card card-secondary">
+    <div class="card-header">
+      <h3 class="card-title">About Company</h3>
+    </div>
+    <!-- /.card-header -->
+    {% for c in company %}
+    <div class="card-body">
+      <strong><img src="{{c.logo.url}}" alt="" width="60px" height="60px">{{c.company_name}}</strong>
+      <p class="text-muted">{{c.description}}</p>
+      <p class="text-muted">{{c.location}}</p>
+      <p class="text-muted">{{c.fk_company.email}}</p>
+      <p class="text-muted">{{c.phone_number}}</p>
+      <p class="text-muted">{{c.website}}</p>
+      <p class="text-muted">{{c.industry}}</p>
+    </div>
+    {% endfor %}
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock %}

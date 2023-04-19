@@ -1,0 +1,38 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Change Status</h3>
+            </div>
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label>Current Status</label><i>: {{change.status}}</i>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Update status</label>
+                                <select class="form-control select2bs4" style="width: 100%;" name="status">
+                                    <option value="Accepted">Shortlisted</option>
+                                    <option value="Rejected">Ignored</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

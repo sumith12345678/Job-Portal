@@ -1,0 +1,46 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Job Details</div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                        <thead style="text-align: center;">
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Company Name</th>
+                                <th>Job Title</th>
+                                <th>Job Type</th>
+                                <th>Vacancy</th>
+                                <th>Industry</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            {% for l in live %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{l.fk_company_pro.company_name}}</td>
+                                <td>{{l.job_title}}</td>
+                                <td>{{l.job_type}}</td>
+                                <td>{{l.vacancy}}</td>
+                                <td>{{l.industry}}</td> 
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

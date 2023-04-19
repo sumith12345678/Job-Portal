@@ -1,0 +1,73 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"> Companies <i class="nav-icon fa fa-building"></i> </h3>
+                    <div class="col-md-4 offset-md-8">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here" name="company_name">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+      </div>
+
+      <div class="card-body p-0">
+        <table class="table table-striped">
+          <thead style="text-align: center;">
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>Logo</th>
+                <th>Company Name</th>
+                <th>Company Email</th>
+                <th>Industry</th>
+                <th>Views</th>  
+                <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
+            {%for i in company%}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td><a href=""><img src="{{i.logo.url}}" alt="" width='50'  height="50" style=" border-radius: 50%;"></td></a>
+              <td>{{i.company_name}}</td>
+              <td>{{i.fk_company.email}}</td>
+              <td>{{i.industry}}</td>
+              <td class="project-actions">
+                <a class="btn btn-primary btn-sm" href="{% url 'company_view' i.id %}">
+                    <i class="fas fa-folder">
+                    </i>
+                    View
+                </a>
+              </td>
+              <td class="project-actions">
+                <a class="btn btn-danger btn-sm" href="{% url 'company_delete' id=i.fk_company.id %}">
+                    <i class="fas fa-trash">
+                    </i>
+                    Delete
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+      <!-- <div class="card-footer">
+        Footer
+      </div> -->
+      <!-- /.card-footer-->
+    </div>
+  </div>
+</section>
+{% endblock %}

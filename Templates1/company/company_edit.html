@@ -1,0 +1,116 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<section class="content">
+        <div class="container-fluid">
+                <div class="card card-default">
+                        <div class="card-header">
+                                <h3 class="card-title">Company Edit</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                        <label>Logo</label>
+                                                        <div class="form-group">
+                                                                <div class="input-group">
+                                                                        <div class="custom-file">
+                                                                                <input type="file"
+                                                                                        class="custom-file-input"
+                                                                                        id="exampleInputFile"
+                                                                                        name="logo">
+                                                                                <label class="custom-file-label"
+                                                                                        for="exampleInputFile">Choose
+                                                                                        Logo</label>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <label>Company Description</label>
+                                                        <div class="input-group mb-3">
+                                                                <input type="text" class="form-control"
+                                                                        name="description" placeholder="{{company.description}}">
+                                                                <div class="input-group-append">
+                                                                        <div class="input-group-text">
+                                                                                <span class="fa fa-info-circle"></span>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+
+                                                        <label>Location</label>
+                                                                <div class="column">
+                                                                        <div class="input-group mb-3">
+                                                                                <input type="text" class="form-control"
+                                                                                        name="location"
+                                                                                        placeholder="{{company.location}}">
+                                                                                <div class="input-group-append">
+                                                                                        <div class="input-group-text">
+                                                                                                <span
+                                                                                                        class="fas fa-map-marker"></span>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                                <label>Phone Number</label>
+                                                                <div class="column">
+                                                                        <div class="input-group mb-3">
+                                                                                <input type="tel" class="form-control"
+                                                                                        name="phone_number"
+                                                                                        placeholder="{{company.phone_number}}">
+                                                                                <div class="input-group-append">
+                                                                                        <div class="input-group-text">
+                                                                                                <span
+                                                                                                        class="fa fa-phone"></span>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                        
+
+                                                                <label>Company Website</label>
+                                                                <div class="column">
+                                                                        <div class="input-group mb-3">
+                                                                                <input type="url" class="form-control"
+                                                                                        name="website"
+                                                                                        placeholder="{{company.website}}">
+                                                                                <div class="input-group-append">
+                                                                                        <div class="input-group-text">
+                                                                                                <span
+                                                                                                        class="fa fa-globe"></span>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                                <label>Industry</label>
+                                                                <div class="column">
+                                                                        <div class="input-group mb-3">
+                                                                                <input type="text" class="form-control"
+                                                                                        name="industry"
+                                                                                        placeholder="{{company.industry}}">
+                                                                                <div class="input-group-append">
+                                                                                        <div class="input-group-text">
+                                                                                                <span
+                                                                                                        class="fa fa-industry"></span>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                        
+
+
+                                                        
+                                                                <div class="col-4">
+                                                                        <button type="submit"
+                                                                                class="btn btn-primary btn-block">Edit</button>
+                                                                </div>
+                                                                <!-- /.col -->
+                                                        
+                                </form>
+                        </div>
+                </div>
+        </div>
+</section>
+{% endblock %}

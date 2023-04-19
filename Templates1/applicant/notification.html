@@ -1,0 +1,35 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid ">
+    {% for a in all %}
+<div class="card">
+    <div class="card-header" style="background-color:  #29237E; color: white;">
+      <h3 class="card-title">{{ forloop.counter }}. Notification</h3>
+    </div>
+    <!-- /.card-header -->
+    
+    <div class="card-body">
+        <label>Company</label><p class="text-muted">{{a.fk_company_job.fk_company_pro.company_name}}</p>
+        <label>Job Title</label><p class="text-muted">{{a.fk_company_job.job_title}}</p>
+        <label>Job Description</label><p class="text-muted">{{a.fk_company_job.job_description}}</p>
+        <label>Location</label><p class="text-muted">{{a.fk_company_job.location}}</p>
+        <label>Salary</label><p class="text-muted">{{a.fk_company_job.salary}}</p>
+        {% if a.status == 'Accepted' %}
+        <b style="color: rgb(57, 212, 0);">"Congratulations, you are shortlisted for the screen call and we will contact you soon"</b>
+        {% elif a.status == 'Rejected' %}
+            <b style="color: rgb(255, 0, 0);">"Believe you can and you are halfway there, Better luck next time"</b>
+        {% elif a.status == 'pending' %}
+            <b style="color: rgb(57, 212, 0);">'Applied Successfully'</b>
+        {% elif a.status == None %}
+            <b style="color: rgb(57, 212, 0);">'Applied Successfully'</b>
+        {% endif %}
+        
+    </div>
+   
+    <!-- /.card-body -->
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

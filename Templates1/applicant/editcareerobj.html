@@ -1,0 +1,39 @@
+{% extends 'base/frame.html' %}
+
+{% block content1 %}
+
+<section class="content">
+  <div class="container-fluid">
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header">Edit CareerObject</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>Career Object</label>
+                <input type="text" class="form-control"name="career_obj" >
+              </div>
+              <!-- /.firstname -->
+
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+{% endblock %}

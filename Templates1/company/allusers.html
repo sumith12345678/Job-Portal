@@ -1,0 +1,152 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="card">
+
+
+        <!-- Modal -->
+    <div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="" id="view_photo" alt="" width="150px" height="150px">
+              </div>
+              <div class="col-md-12">
+                <h3 id="view_name"></h3>
+                <p><strong>Job Role:</strong> <span id="view_jobrole"></span></p>
+                <p><strong>Work Status:</strong> <span id="view_workstatus"></span></p>
+                <p><strong>Email:</strong> <span id="view_email"></span></p>
+                <p><strong>Gender:</strong> <span id="view_gender"></span></p>
+                <p><strong>Marital Status:</strong> <span id="view_marital_status"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="view_dob"></span></p>
+                <p><strong>Address:</strong> <span id="view_address"></span></p>
+                <p><strong>Phone:</strong> <span id="view_phone"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="card-header">
+        <h3 class="card-title"> All Users <i class="nav-icon fa fa-users" aria-hidden="true"></i></h3>
+        <div class="col-md-4 offset-md-8">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="search" class="form-control form-control-lg" placeholder="Job roles" name="jobrole">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-lg btn-default">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+
+      <div class="card-body p-0">
+        <table class="table table-striped">
+          <thead style="text-align: center;">
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Job Role</th> 
+                <th>Views</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center;">
+            {%for i in profile%}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td><a href=""><img src="{{i.photo.url}}" alt="" width='50'  height="50" style=" border-radius: 50%;"></td></a>
+              <td>{{i.firstname}} {{i.lastname}}</td>
+              <td>{{i.fk_user.email}}</td>
+              <td>{{i.jobrole}}</td>
+              <td class="project-actions">
+                <button class="btn btn-primary btn-sm" 
+                  data-toggle="modal" 
+                  data-target="#view" 
+                  data-firstname="{{i.firstname}}"
+                  data-lastname="{{i.lastname}}"
+                  data-photo="{{i.photo.url}}"
+                  data-email="{{i.fk_user.email}}"
+                  data-phone="{{i.phone}}"
+                  data-gender="{{i.gender}}"
+                  data-marital_status="{{i.marital_status}}"
+                  data-dob="{{i.dob}}"
+                  data-address="{{i.address}}"
+                  data-workstatus="{{i.workstatus}}"
+                  data-jobrole="{{i.jobrole}}"
+                  >
+                  <i class="fa fa-smile-o" aria-hidden="true"></i>
+                    View
+                </button>
+                
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+      <!-- <div class="card-footer">
+        Footer
+      </div> -->
+      <!-- /.card-footer-->
+    </div>
+  </div>
+</section>
+<script>
+  // Get the modal element
+  var userProfileModal = document.getElementById("view");
+  
+  // Get the button that opens the modal
+  var viewProfileButtons = document.querySelectorAll("[data-target='#view']");
+  
+  // Add a click event listener to each "View Profile" button
+  for (var i = 0; i < viewProfileButtons.length; i++) {
+    viewProfileButtons[i].addEventListener("click", function() {
+      // Extract the data attributes from the clicked button
+      var firstname = this.getAttribute("data-firstname");
+      var lastname = this.getAttribute("data-lastname");
+      var photo = this.getAttribute("data-photo");
+      var email = this.getAttribute("data-email");
+      var phone = this.getAttribute("data-phone");
+      var gender = this.getAttribute("data-gender");
+      var marital_status = this.getAttribute("data-marital_status");
+      var dob = this.getAttribute("data-dob");
+      var address = this.getAttribute("data-address");
+      var workstatus = this.getAttribute("data-workstatus");
+      var jobrole = this.getAttribute("data-jobrole");
+
+  
+      // Update the content of the modal with the user's profile information
+      userProfileModal.querySelector("#view_name").textContent = firstname + " " + lastname;
+      userProfileModal.querySelector("#view_photo").setAttribute("src", photo);
+      userProfileModal.querySelector("#view_email").textContent = email;
+      userProfileModal.querySelector("#view_phone").textContent = phone;
+      userProfileModal.querySelector("#view_gender").textContent = gender;
+      userProfileModal.querySelector("#view_marital_status").textContent = marital_status;
+      userProfileModal.querySelector("#view_dob").textContent = dob;
+      userProfileModal.querySelector("#view_address").textContent = address;
+      userProfileModal.querySelector("#view_workstatus").textContent = workstatus;
+      userProfileModal.querySelector("#view_jobrole").textContent = jobrole;
+    });
+  }
+</script>
+{% endblock %}

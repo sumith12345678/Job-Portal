@@ -1,0 +1,83 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row mt-3">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-primary">
+                    <div class="inner">
+                        <h3>{{users.count}}</h3>
+
+                        <p>No of Users</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="#card2" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-info">
+                    <div class="inner">
+                        <h3>{{selected.count}}</h3>
+
+                        <p>Selected Applicants</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#card1" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{job.count}}</h3>
+
+                        <p>No of Jobs</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-briefcase"></i>
+                    </div>
+                    <a href="{% url 'admin_job_details' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>{{live.count}}</h3>
+
+                        <p>Live Jobs</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-clock"></i>
+                    </div>
+                    <a href="{% url 'admin_live_jobs' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+            <a class="btn btn-success btn-sm" href="{% url 'company_edit' company.id %}">
+                <i class="fas fa-folder">
+                </i>
+                Edit
+            </a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

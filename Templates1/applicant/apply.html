@@ -1,0 +1,82 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid">
+    <div class="card ">
+        <div class="card-header" style="background-color:  #29237E; color: white;">
+            <h3 class="card-title">Apply Job</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class='row'>
+                <div class='col-md-6'>
+                    <div class="post">
+                        <div class="user-block">
+                            <img class="img-circle img-bordered-sm" src="{{job.fk_company_pro.logo.url}}" alt="">
+                            <span class="username">
+                                <b class="uppercase1">{{job.fk_company_pro.company_name}}</b>
+                            </span>
+                        </div>
+                    </div>
+                    <label>Company Description</label>
+                    <p class="text-muted">{{job.fk_company_pro.description}}</p>
+                    <label>Job Title</label>
+                    <p class="text-muted">{{job.job_title}}</p>
+                    <label>Job Description</label>
+                    <p class="text-muted">{{job.job_description}}</p>
+                    <label>Experience Requirements</label>
+                    <p class="text-muted">{{job.experience_requirements}}</p>
+                    <label>Application Deadline</label>
+                    <p class="text-muted">{{job.application_deadline}}</p>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Resume</label>
+                                    <div class="input-group">
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="resume"">
+                                        <label class="custom-file-label" for="exampleInputFile"></label>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    {% if application %}
+                                        <label style="color: rgb(57, 212, 0);">Applied</label> 
+                                    {% else %}
+                                    <button type="submit" class="btn btn-primary">Apply</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class='col-md-6'>
+                    <label>Vacancy</label>
+                    <p class="text-muted">{{job.vacancy}}</p>
+                    <label>Job Type</label>
+                    <p class="text-muted">{{job.job_type}}</p>
+                    <label>Industry</label>
+                    <p class="text-muted">{{job.industry}}</p>
+                    <label>Location</label>
+                    <p class="text-muted">{{job.location}}</p>
+                    <label>Job Field</label>
+                    <p class="text-muted">{{job.job_fields}}</p>
+                    <label>Salary</label>
+                    <p class="text-muted">{{job.salary}}</p>
+                    <label>Education Requirement</label>
+                    <p class="text-muted">{{job.education_requirements}}</p>
+                    <label>Skills and Qualifications</label>
+                    <p class="text-muted">{{job.skills_and_qualifications}}</p>
+                 
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

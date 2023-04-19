@@ -1,0 +1,83 @@
+{% extends 'base2/base2.html' %}
+{% block content3 %}
+{% load static %}
+
+
+<body>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-4 order-5 order-lg-1 d-flex flex-column justify-content-center">
+          <h2 data-aos="fade-up">Your Gateway to Finding the Perfect Job</h2>
+          <p data-aos="fade-up" data-aos-delay="100">"WorkSpot is a user-friendly job portal that helps jobseekers find the perfect job by connecting them with<br>
+          a vast selection of job postings from various industries<br>and locations. With advanced search filters and personalized job recommendations, finding the right job has never been easier."</p>
+
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Companies</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Users</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Jobs</p>
+              </div>
+            </div>
+            <!-- End Stats Item -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
+            data-aos-delay="200" method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Search Job ..." name="jobname" id="input_field">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+  <section id="faq" class="faq">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-8">
+          
+          {% for j in jobs %}
+          <div class="accordion-item" >
+            <div class="accordion-button" style="color: white;background-color: #1F3E81; position: relative;"> <h4><i class="fa-solid fa-bullhorn"></i>  {{j.job_title}}</h4>
+            <div style="position: absolute; left: 85%;">
+              <a href="{% url 'applicant_register' %}" ><button type="submit" class="btn btn-primary" >Apply <i class="fa-solid fa-right-to-bracket"></i></button></a>
+            </div>
+            </div> 
+            <div class="accordion-body" style="color: #1F3E81;">
+              <br>
+              <h6 class="capitalize1">{{j.fk_company_pro.company_name}} {{j.location}} </h6>
+              <p>{{j.job_description}}</p>
+            </div>
+          </div> 
+          {% endfor %} 
+       
+        </div>
+      </div>
+    </div>
+  </section>
+    
+  {% endblock %}

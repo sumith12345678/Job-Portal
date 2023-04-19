@@ -1,0 +1,21 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid">
+<div class="card card-secondary">
+    <div class="card-header">
+      <h3 class="card-title">About job</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        {% for j in job %}
+      <strong><i class="ion ion-briefcase"></i> {{j.job_title}}</strong>
+      <p class="text-muted"></p>
+      <hr>
+        {% endfor %}
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+
+
+<!-- <button><a href="{% url 'addjob' %}" style="text-decoration: none;">Add Job</a></button>
+<button><a href="{% url 'company_home' %}" style="text-decoration: none;">Home</a></button>
+
+<hr>
+
+<div>
+    <table>
+        <tr>
+            <th>logo</th>
+            <th>Company Name</th>
+            <th>Company Description</th>
+            <th>Job Title:</th>
+            <th>Job Description</th>
+            <th>No.of.vacancy</th>
+            <th>Job Type</th>
+            <th>Industry</th>
+            <th>Location</th>
+            <th>Job_fields</th>
+            <th>Salary</th>
+            <th>Education_requirements</th>
+            <th>Experience_requirements</th>
+            <th>Skills_and_qualifications</th>
+            <th>Application_deadline</th>
+            <th>Job filled</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for j in job_lists%}
+        <tr>
+            <td><img src="{{j.fk_company_pro.logo.url}}" alt="" width="40" height="40" ></td>
+            <td>{{j.fk_company_pro.company_name}}</td>
+            <td>{{j.fk_company_pro.description}}</td>
+            <td>{{j.job_title}}</td>
+            <td>{{j.job_description}}</td>
+            <td>{{j.vacancy}}</td>
+            <td>{{j.job_type}}</td>
+            <td>{{j.industry}}</td>
+            <td>{{j.location}}</td>
+            <td>{{j.job_fields}}</td>
+            <td>{{j.salary}}</td>
+            <td>{{j.education_requirements}}</td>
+            <td>{{j.experience_requirements}}</td>
+            <td>{{j.skills_and_qualifications}}</td>
+            <td>{{j.application_deadline}}</td>
+
+            {% if j.filled %}
+            <td><a href="{% url 'checkfill' j.id %}">Filled</a></td>
+            {% else %}
+            <td><a href="{% url 'checkfill' j.id %}">Not Filled</a></td>
+            {% endif %}
+
+            <td><a href="{% url 'job_edit' j.id %}">Edit</a></td>
+            <td><a href="{% url 'job_delete' j.id %}">Delete</a></td>
+        </tr>
+        
+        {% endfor %}
+    
+    </table>
+</div> -->
+
+<div class="container-fluid">
+    <section class="content-header">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Job List</h1>
+          </div>
+        </div>
+    </section>
+    <section class="content">
+        {% for j in job_lists%}
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+              
+              <div class="row">
+                <div class="col-12">
+                  <h4>{{forloop.counter}}. {{j.job_title}} </h4>
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{j.fk_company_pro.logo.url}}" alt="user image">
+                        <span class="username" >
+                          {{j.fk_company_pro.company_name}}
+                          <br>
+                          {{j.location}}
+                        </span>
+                      </div>
+                      <!-- /.user-block -->
+                      <strong>Job Description</strong>
+                      <p> {{j.job_description}}</p>
+
+                      <strong>Job Fields</strong>
+                      <p >{{j.job_fields}}</p>
+
+                      <strong>Education</strong>
+                      <p> {{j.education_requirements}}</p>
+
+                      <strong>Experience</strong>
+                      <p> {{j.experience_requirements}}</p>
+
+                      <strong>Skills & Qualifications</strong>
+                      <p> {{j.skills_and_qualifications}}</p>
+
+
+                      <strong>Vacany</strong>
+                      <p>{{j.vacancy}}</p>
+
+                      
+
+                      <p>
+                        <a href="{{j.fk_company_pro.website.url}}" class="link-black text-sm"><i class="fas fa-link mr-1"></i>{{j.fk_company_pro.website}}</a>
+                      </p>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-4">
+                    <div class="info-box bg-light">
+                      <div class="info-box-content">
+                        <span class="info-box-text text-center text-muted">Job Type</span>
+                        <span class="info-box-number text-center text-muted mb-0">{{j.job_type}}</span>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Salary</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{j.salary}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="info-box bg-light">
+                      <div class="info-box-content">
+                        <span class="info-box-text text-center text-muted">Deadline</span>
+                        <span class="info-box-number text-center text-muted mb-0">{{j.application_deadline}}</span>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+              <h3 class="text-secondary"><img class="img-circle img-bordered-sm" src="{{j.fk_company_pro.logo.url}}" alt="" width="120" height="120"> <b>{{j.fk_company_pro.company_name}}</b></h3>
+              <p class="text-muted"><i>{{j.fk_company_pro.description}}</i></p>
+              <br>
+              <div class="post">
+              <strong>Industry</strong>
+                      <p class="text-muted">{{j.industry}}</p>
+
+                      
+                </div>
+              <div class="text-muted">
+                <p><b>Company HR</b>
+                  <i class="d-block">Sreekanth</i>
+                </p>
+                <a href="{% url 'job_edit' j.id %}" class="btn btn-sm btn-primary">Edit Job</a>
+                <a href="{% url 'job_delete' j.id %}" class="btn btn-sm btn-danger">Delete</a>
+                <p></p>
+                <b>Vacancy Status</b>
+                {% if j.filled %}
+                <td><a href="{% url 'checkfill' j.id %}" style="color:red;"><i class="fa fa-stop-circle fa-2x" aria-hidden="true"></i></a></td>
+                {% else %}
+                <td><a href="{% url 'checkfill' j.id %}" style="color:rgb(36, 246, 36);"><i class="fa fa-play-circle fa-2x" aria-hidden="true"></i></a></td>
+                {% endif %}
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+        <!-- /.card-body -->
+      
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+  {% endblock %}

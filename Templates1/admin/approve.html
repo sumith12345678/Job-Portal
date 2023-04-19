@@ -1,0 +1,32 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid">
+<div class="card card-secondary">
+    <div class="card-header">
+      <h3 class="card-title">Company Request</h3>
+    </div>
+    <!-- /.card-header -->
+    {% for u in unapproved %}
+    <div class="card-body">
+        <label> Company Details</label>
+        <br>
+      <strong>{{forloop.counter}}. {{ u.company_name }} <img src="{{u.logo.url}}" alt="" width="50" height="50"></strong>
+      <p class="text-muted">{{u.description}}</p>
+      <p class="text-muted">{{u.location}}</p>
+      <p class="text-muted">{{u.fk_company.email}}</p>
+      <p class="text-muted">{{u.phone_number}}</p>
+      <p class="text-muted">{{u.website}}</p>
+      <p class="text-muted">{{u.industry}}</p>
+      <form method="post" alt="">
+        {% csrf_token %}
+        <input type="hidden" name="approve" value="{{ u.id }}">
+        <button type="submit" class="btn btn-primary">Approve</button>
+    </form>
+    </div>
+    {% endfor %}
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock %}

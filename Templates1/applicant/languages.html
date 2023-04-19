@@ -1,0 +1,80 @@
+{% extends 'base/frame.html' %}
+
+{% block content1 %}
+
+<section class="content">
+  <div class="container-fluid">
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title"> Add Languages</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+        
+        
+                    <div class="form-group">
+                        <label>Language</label>
+                        <input type="text" class="form-control" placeholder="for example: English" name="languages">
+                    </div>
+                    <!-- /.language -->
+        
+        
+                    <div class="form-group">
+                        <label>Proficiency</label>
+                        <select class="form-control select2bs4" style="width: 100%;" name="proficiency">
+                            <option selected="selected">Select</option>
+                            <option value="BEGINNER">Beginner</option>
+                            <option value="PROFICIENT">Proficient</option>
+                            <option value="EXPERT">Expert</option>
+                        </select>
+                    </div>
+                    <!-- /.dropdown -->
+        
+        
+                    <div class="form-group clearfix">
+                        <div class="icheck-success d-inline">
+                            
+                            <input type="checkbox" id="checkboxSuccess1" name="read" value='True'>
+                            <label for="checkboxSuccess1">
+                                Read
+                            </label>
+                        </div>
+        
+                        <div class="icheck-success d-inline">
+                            
+                            <input type="checkbox" id="checkboxSuccess2" name="write" value='True'>
+                            <label for="checkboxSuccess2">
+                                Write
+                            </label>
+                        </div>
+        
+                        <div class="icheck-success d-inline">
+                            
+                            <input type="checkbox" id="checkboxSuccess3"  name="speak" value='True'>
+                            <label for="checkboxSuccess3">
+                                Speak
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+        
+                </div>
+            </div>
+        </form>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+  
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="\static\images\workspot125-removebg-preview.png" alt="" border="2" style="border-radius: 50%; border-color: white;"> 
+        <h1>WorkSpot</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{% url 'index' %}" class="active">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'faqs' %}">FAQs</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li class="dropdown"><a href="#"><span>Sign Up</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{% url 'company_register' %}">Company</a></li>
+           
+              <li><a href="{% url 'applicant_register' %}">Applicants</a></li>
+            
+            </ul>
+          </li>
+          
+          <li><a class="get-a-quote" href="{% url 'all_login' %}">Sign In</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->

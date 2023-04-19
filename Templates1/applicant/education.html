@@ -1,0 +1,78 @@
+{% extends 'base/frame.html' %}
+
+{% block content1 %}
+
+<section class="content">
+  <div class="container-fluid">
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Profile Details</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>Level</label>
+                <select class="form-control select2bs4" style="width: 100%;" name="level">
+                  <option selected="selected">Select</option>
+                  <option value="HighSchool">High School</option>
+                  <option value="HigherSecondarySchool">Higher Secondary</option>
+                  <option value="Graduation/Diploma">Graduation/Diploma</option>
+                  <option value="PostGraduation">Post Graduation</option>
+                  <option value="PhD">PhD</option>
+                </select>
+              </div>
+              <!-- /.dropdown -->
+
+              <div class="form-group">
+                <label>School / University</label>
+                <input type="text" class="form-control" placeholder="Enter ..." name="school_or_university">
+              </div>
+              <!-- /.firstname -->
+              <div class="form-group">
+                <label>Course</label>
+                <input type="text" class="form-control" placeholder="Enter ..." name="course">
+              </div>
+              <!-- /.lastname -->
+
+              <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" name="start_date" required>`
+              </div>
+              <!-- /.date -->
+
+              <div class="form-group">
+                <label>End Date</label>
+                <input type="date" name="end_date" required>`
+              </div>
+              <!-- /.date -->
+
+
+              <div class="form-group">
+                <label>Additional_Details</label>
+                <textarea class="form-control" rows="2" placeholder="Enter ..." name="additional_details"></textarea>
+              </div>
+              <!-- /.Textarea -->
+
+              <button type="submit" class="btn btn-primary">Add</button>
+            
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+{% endblock %}

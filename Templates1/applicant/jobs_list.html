@@ -1,0 +1,111 @@
+{% extends 'base/frame.html' %}
+{% block content1 %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card ">
+            <div class="card-header"  style="background-color:  #29237E; color: white;">
+                <h4 style="text-align: center;"> Job Search</h4></div>
+                <div class="card-body">    
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <div class="col-md-5 offset-md-1"><input type="search"
+                                        class="form-control form-control-lg" placeholder="Type your keywords here"
+                                        name="company_name"></div>
+                                <div class="col-md-5"><input type="search" class="form-control form-control-lg"
+                                        placeholder="Type your keywords here" name="company_name"></div>
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-8 offset-md-2">
+                        <br>                        
+                        {% for j in jobs %}
+                        <div class="card ">
+                            <div class="card-header" style="color: white;background-color: #1F3E81;">
+                                <h3 class="card-title">	 <i class="fa fa-bullhorn"></i> {{j.job_title}}</h3>
+                                <div class="card-tools">
+                                  <a href="{% url 'apply' j.id %}">
+                                    <button type="button" class="btn btn-tool btn-primary">View <i class="fa fa-share-square"></i></button>
+                                    </a>
+                                </div>
+                              </div>
+                            <div class="card-body" style="color: #1F3E81;">
+                            <h6 class="capitalize1"><i class="fa fa-building"></i> {{j.fk_company_pro.company_name}}</h6>
+                            <p class="capitalize1"><i class="fa fa-briefcase"></i> {{j.vacancy}} 	<i class="fa fa-map-marker"></i> {{j.location}} <i class="fa fa-inr"></i> {{j.salary}}</p>
+                            <p> <i class="fa fa-folder-open"></i> {{j.job_description}}</p>
+                            </div>
+                        </div> 
+                        {% endfor %} 
+                    </div>
+                </div>
+                </div>
+
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+<button><a href="{% url 'applicant_home' %}" style="text-decoration: none;">Home</a></button>
+<hr>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="jobname" placeholder="Job Title">
+        <input type="text" name="jobloc" placeholder="Job location">
+        <input type="submit" value="Search">
+    </form>
+
+    <table>
+        <tr>
+            <th>logo</th>
+            <th>Company Name</th>
+            <th>Company Description</th>
+            <th>Job Title:</th>
+            <th>Job Description</th>
+            <th>No.of.vacancy</th>
+            <th>Job Type</th>
+            <th>Industry</th>
+            <th>Location</th>
+            <th>Job_fields</th>
+            <th>Salary</th>
+            <th>Education_requirements</th>
+            <th>Experience_requirements</th>
+            <th>Skills_and_qualifications</th>
+            <th>Application_deadline</th>
+            <th>apply</th>
+
+        </tr>
+        {% for j in jobs%}
+        <tr>
+            <td><img src="{{j.fk_company_pro.logo.url}}" alt="" width="40" height="40"></td>
+            <td>{{j.fk_company_pro.company_name}}</td>
+            <td>{{j.fk_company_pro.description}}</td>
+            <td>{{j.job_title}}</td>
+            <td>{{j.job_description}}</td>
+            <td>{{j.vacancy}}</td>
+            <td>{{j.job_type}}</td>
+            <td>{{j.industry}}</td>
+            <td>{{j.location}}</td>
+            <td>{{j.job_fields}}</td>
+            <td>{{j.salary}}</td>
+            <td>{{j.education_requirements}}</td>
+            <td>{{j.experience_requirements}}</td>
+            <td>{{j.skills_and_qualifications}}</td>
+            <td>{{j.application_deadline}}</td>
+            <td><a href="{% url 'apply' j.id %}">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

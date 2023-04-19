@@ -1,0 +1,29 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid">
+<div class="card card-secondary">
+    <div class="card-header">
+      <h3 class="card-title">About User</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        {% for u in user %}
+      <strong class="capitalize1"><img src="{{u.photo.url}}" alt="" width="60px" height="60px">{{u.firstname}} {{u.lastname}}</strong>
+      <p class="text-muted">{{u.jobrole}}</p>
+      <p class="text-muted">{{u.gender}}</p>
+      <p class="text-muted">{{u.dob}}</p>
+      <p class="text-muted">{{u.marital_status}}</p>
+      <p class="text-muted">{{u.address}}</p>
+      <p class="text-muted">{{u.fk_user.email}}</p>
+      <p class="text-muted">{{u.phone}}</p>
+      <p class="text-muted">{{u.workstatus}}</p>
+
+      <hr>
+        {% endfor %}
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+{% endblock %}

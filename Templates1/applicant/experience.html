@@ -1,0 +1,100 @@
+{% extends 'base/frame.html' %}
+
+{% block content1 %}
+
+<section class="content">
+  <div class="container-fluid">
+
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Add Experience</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+      
+
+              <div class="form-group clearfix">
+                <label>
+                  Present company
+                </label>
+                <div class="icheck-primary d-inline">
+                    <input type="checkbox" id="checkbox1"  name="is_this_current_emp"  value='True'>
+                    <label for="checkbox1">
+                    </label>
+                </div>
+              </div>
+
+              
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" class="form-control" placeholder="Enter ..." name="current_company_name">
+              </div>
+              <!-- /.firstname -->
+              <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" placeholder="Enter ..." name="location">
+              </div>
+              <!-- /.lastname -->
+      
+              <div class="form-group">
+                <label>Date of join</label>
+                <input type="date" name="doj" required>`
+              </div>
+              <!-- /.date -->
+      
+              <div class="form-group">
+                <label>Salary</label>
+                <input type="text" class="form-control" placeholder="Enter ..." name="current_salary">
+              </div>
+              <!-- /.firstname -->
+      
+              <div class="form-group">
+                <label>Job Profile</label>
+                <textarea class="form-control" rows="3" placeholder="Enter ..." name="job_profile"></textarea>
+              </div>
+              <!-- /.Textarea -->
+      
+              <div class="form-group">
+                <label>Notice Period</label>
+                <select class="form-control select2bs4" style="width: 100%;" name="notice_period">
+                  <option selected="selected">Select</option>
+                  <option value="15_Days_and_less">15 Days & less</option>
+                  <option value="1Month">1 Month</option>
+                  <option value="2Month">2 Month</option>
+                  <option value="3Month">3 Month</option>
+                  <option value="MoreThan3Month">More Than 3 Month</option>
+                  <option value="ServingNoticePeriod">Serving Notice Period</option>
+                </select>
+              </div>
+              <!-- /.dropdown -->
+      
+              <div class="form-group">
+                <label>Date of Leaving</label>
+                <input type="date" name="dol" required>`
+              </div>
+              <!-- /.date -->
+      
+      
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+      
+      
+      
+          </div>
+        </form>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+
+{% endblock %}

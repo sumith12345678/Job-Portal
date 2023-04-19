@@ -1,0 +1,110 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Add Job</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" class="form-control" placeholder="{{job.job_title}}" name="job_title">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Job Description</label>
+                                <textarea class="form-control" rows="3" placeholder="{{job.job_description}}." name="job_description"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                <label>Job Type</label>
+                                <select class="form-control select2bs4" style="width: 100%;" name="job_type">
+                                  <option selected="selected">Select</option>
+                                  <option value="Full_Time">Full Time</option>
+                                  <option value="Part_time">Part Time</option>
+                                  <option value="Contract">Contract</option>
+                                  <option value="Internship">Internship</option>
+                                </select>
+                                </div>
+
+                                <div class="form-group">
+                                <label>Industry</label>
+                                <input type="text" class="form-control" placeholder="{{job.industry}}" name="industry">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" class="form-control" placeholder="{{job.location}}" name="location">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Job Field</label>
+                                <input type="text" class="form-control" placeholder="{{job.job_fields}}" name="job_fields">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                <label>Salary</label>
+                                <input type="number" class="form-control" placeholder="{{job.salary}}" name="salary">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Education Requirements</label>
+                                <input type="text" class="form-control" placeholder="{{job.education_requirements}}" name="education_requirements">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Experience Requirementse</label>
+                                <input type="text" class="form-control" placeholder="{{job.experience_requirements}}" name="experience_requirements">
+                                </div>
+                              
+                                <div class="form-group">
+                                <label>Skills and Qualifications</label>
+                                <textarea class="form-control" rows="3" placeholder="{{job.skills_and_qualifications}}" name="skills_and_qualifications"></textarea>
+                                </div>
+
+
+                                <div class="form-group">
+                                <label>Application Deadline</label>
+                                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" name="application_deadline"/>
+                                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                <label>No of vacancies</label>
+                                <input type="number" class="form-control" placeholder="{{job.vacancy}}" name="vacancy">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+
+

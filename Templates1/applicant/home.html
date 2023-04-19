@@ -1,0 +1,394 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- /.col -->
+    <div class="col-md-12">
+      <!-- Widget: user widget style 1 -->
+      <div class="card card-widget widget-user shadow-lg">
+
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+        <div class="widget-user-header text-white" style="background-image: url('/static/images/work2244.png'); background-position: center center;"> 
+          <!-- background-color: #29237E; -->
+          <br>
+          <h5 class="widget-user-desc text-right uppercase1 hide-on-small">{{profiles.firstname}} {{profiles.lastname}}</h5>
+          <h5 class="widget-user-desc text-right uppercase1 hide-on-small">{{profiles.jobrole}} </h5>
+          {% for i in profile%}
+          <h5 class="widget-user-desc text-right"><a href="{% url 'edit_profile' i.id%}" style="color: white"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h5>
+          {% endfor %}
+        </div>
+        <div class="widget-user-image">
+          <img class="img-circle mt-3" src="{{profiles.photo.url}}" alt="User Avatar">
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-sm-4 border-right">
+              <div class="description-block capitalize1">
+                <i class="fa fa-user" aria-hidden="true"></i>  {{request.user.username}}
+
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 border-right">
+              <div class="description-block">
+                <!-- <h5 class="description-header">13,000</h5> -->
+                <span class="description-text"><i class="fa fa-calendar-o" aria-hidden="true"></i>  {{profiles.dob}}</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <!-- <h5 class="description-header">35</h5> -->
+                <div class="description-email lowercase1"><i class="fa fa-envelope" aria-hidden="true"></i>  {{request.user.email}}</div>
+                <span class="description-text lowercase1"><i class="fa fa-phone-square" aria-hidden="true"></i>  {{profiles.phone}}</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+
+      </div>
+      <!-- /.widget-user -->
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-3 ">
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header" >
+          <h3 class="card-title">Quick Links</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool border" data-card-widget="collapse" style="background-color: #423aac; color: white;">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a href="#card1" class="nav-link">
+                <i class="far fa-file-alt"></i> Resume
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="#card2" class="nav-link">
+                <i class="fas fa-book mr-1"></i> Education
+
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#card3" class="nav-link">
+                <i class="fa fa-briefcase"></i> Experience
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#card4" class="nav-link">
+                <i class="fa fa-list-ul"></i> Skills
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#card5" class="nav-link">
+                <i class="fa fa-comment"></i> Career Objective
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#card6" class="nav-link">
+                <i class="fa fa-folder"></i> Projects
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#card7" class="nav-link">
+                <i class="fa fa-language"></i> Language
+
+              </a>
+            </li>
+
+          </ul>
+        </div>
+        <!-- /.card-body -->
+
+        <!-- /.card -->
+      </div>
+
+      <!-- /.card -->
+    </div>
+
+    <div class="col-9">
+      <!-- Default box -->
+      <!-- resume  -->
+      <section class="card1" id="card1">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title" >Resume <i class="far fa-file-alt"></i></h3>
+            <div class="card-tools">
+              {% for r in resume %}
+              <a href="{% url 'edit_resume' r.id %}"><button type="button" class="btn btn-tool border" style="background-color: #423aac; color: white;">
+                  Update<i class="fa fa-plus"></i>
+                </button></a>
+            </div>
+
+          </div>
+
+          <div class="card-body">
+            <a href="{{r.resume.url}}" style="text-decoration: none;">
+              <i class="fa fa-file-text" aria-hidden="true"></i>
+            </a>
+            {{r.resume}}
+          </div>
+            {% endfor %}
+         
+
+        </div>
+      </section>
+      <!-- education  -->
+      <section class="card2" id="card2">
+        <div class="card">
+
+          <div class="card-header" >
+            <h3 class="card-title">Education <i class="fas fa-book mr-1"></i></h3>
+            <div class="card-tools">
+              <a href="{% url 'applicant_education' %}">
+                <button type="button" class="btn btn-tool border" style="background-color: #423aac; color: white;">Add <i class="fa fa-plus"></i></button>
+                </a>
+            </div>
+          </div>
+          {% for e in education %}
+          <div class="card-header">
+            <div class="card-tools">
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="{% url 'edit_education' e.id%}" style="color: black;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </div>
+                <div class="col">
+                  <a href="{% url 'delete_education' e.id%}" style="color: black;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
+              </div>
+
+            </div>
+            <i class="fa fa-chevron-right"></i>{{e.level}}<br>
+            from {{e.school_or_university}} in {{e.course}} <br>
+            From:{{e.start_date}} - To:{{e.end_date}}<br>
+            {{e.additional_details}}
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      <!-- experience  -->
+      <section class="card3" id="card3">
+        <div class="card">
+          <div class="card-header" >
+            <h3 class="card-title">Experience <i class="fa fa-briefcase"></i></h3>
+
+            <div class="card-tools">
+              <a href="{% url 'applicant_experience' %}"><button type="button" class="btn btn-tool border" style="background-color: #423aac; color: white;">
+                  Add <i class="fa fa-plus"></i>
+                </button></a>
+
+            </div>
+          </div>
+          {% for e in experience %}
+          <div class="card-header">
+            <div class="card-tools">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="{% url 'edit_experience' e.id%}" style="color: black;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </div>
+                <div class="col">
+                  <a href="{% url 'delete_experience' e.id%}" style="color: black;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              
+             
+            </div>
+            <i class="fa fa-chevron-right"></i>{{e.job_profile}}
+            <br>
+            in {{e.current_company_name}},
+            {{e.location}}
+            <br>
+            {{e.doj}}/{{e.dol}}
+          </div>
+          {% endfor %}
+          <!-- /.card-body -->
+        </div>
+      </section>
+      <!-- Skills  -->
+      <section class="card4" id="card4">
+        <div class="card">
+          <div class="card-header" >
+            <h3 class="card-title"> Skills <i class="fa fa-list-ul"></i></h3>
+
+
+            <div class="card-tools">
+              <a href="{% url 'applicant_keyskills' %}"><button type="button" class="btn btn-tool border" style="background-color: #423aac; color: white;">
+                  Add <i class="fa fa-plus"></i>
+                </button></a>
+
+            </div>
+          </div>
+          <div class="card-header">
+            <div class="row">
+
+              {% for k in key_skills %}
+              <div class="col-md-3">
+
+                {{k.key_skills}}
+                <a href="{% url 'delete_keyskills' k.id %}" style="color: black;"><i class="fa fa-times"></i></a>
+
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+        </div>
+      </section>
+      <!-- career_obj  -->
+      <section class="card5" id="card5">
+        <div class="card">
+          <div class="card-header" >
+            <h3 class="card-title">Career Objective <i class="fa fa-comment mr-1"></i></h3>
+            <div class="card-tools">
+          {% for c in career %}
+              <a href="{% url 'edit_careerobj' c.id%}"><button type="button" class="btn btn-tool border" style="background-color: #423aac; color: white;">
+                  Edit <i class="fa fa-plus"></i>
+                </button></a>
+            </div>
+          </div>
+
+          <div class="card-body">
+            {{c.career_obj}}
+          </div>
+          {% endfor %}
+          <!-- /.card-body -->
+
+          <!-- /.card-footer-->
+        </div>
+      </section>
+      <!-- projects  -->
+      <section class="card6" id="card6">
+        <div class="card">
+          <div class="card-header" >
+            <h3 class="card-title">Projects <i class="fa fa-folder mr-1"></i></h3>
+            <div class="card-tools">
+              <a href="{% url 'applicant_projects' %}"><button type="button" class="btn btn-tool border" style="background-color: #423aac; color: white;">
+                  Add <i class="fa fa-plus"></i>
+                </button></a>
+
+            </div>
+          </div>
+          {% for p in projects %}
+          <div class="card-header">
+            <div class="card-tools">
+              <div class='row'>
+                <div class="col-md-6">
+                  <a href="{% url 'edit_project' p.id%}" style="color: black;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </div>
+                <div class="col">
+                  <a href="{% url 'deleteproject' p.id%}" style="color: black;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+            Project name: {{p.project_name}} <br>
+            Description : {{p.project_description}} <br>
+            link : {{p.project_link}}
+
+          </div>
+          {% endfor %}
+          <!-- /.card-body -->
+        </div>
+      </section>
+      <!-- languages  -->
+      <section class="card7" id="card7">
+        <div class="card">
+          <div class="card-header" >
+            <h3 class="card-title"> Language <i class="fa fa-language mr-3"></i> </h3>
+
+            <div class="card-tools">
+              <a href="{% url 'applicant_languages' %}"><button type="button" class="btn border btn-tool" style="background-color: #423aac; color: white;">
+                  Add <i class="fa fa-plus"></i>
+                </button></a>
+
+            </div>
+          </div>
+
+          <div class="card-body p-0">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Language</th>
+                  <th>Proficiency</th>
+                  <th style="width: 40px">Read</th>
+                  <th style="width: 40px">Write</th>
+                  <th style="width: 40px">Speak</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for l in languages %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{l.languages}}</td>
+                  <td>{{l.proficiency}}</td>
+                  <td style="text-align: center;">{% if l.read == True %}
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                    {% endif %}
+                  </td>
+
+                  <td style="text-align: center;">{% if l.write == True %}
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                    {% endif %}
+                  </td>
+                  <td style="text-align: center;">{% if l.speak == True %}
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                    {% endif %}
+                  </td>
+                  <td></td>
+                  <td><a href="{% url 'edit_languages' l.id%}" style="color: black;">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a></td>
+                  </td>
+                  <td><a href="{% url 'delete_languages' l.id%}" style="color: black;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+          <!-- <div class="card-footer">
+            Footer
+          </div> -->
+          <!-- /.card-footer-->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- </div> -->
+  </div>
+  <!-- </section> -->
+</div>
+
+
+
+
+{% endblock %}

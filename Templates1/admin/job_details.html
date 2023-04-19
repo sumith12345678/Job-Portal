@@ -1,0 +1,63 @@
+{% extends 'base/frame.html' %}
+{% load static %}
+{% block content1 %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Job Details</div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                        <thead style="text-align: center;">
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Company Name</th>
+                                <th>Job Title</th>
+                                <th>Job Type</th>
+                                <th>Vacancy</th>
+                                <th>Industry</th>
+                                <th>Views</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            {% for j in job %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{j.fk_company_pro.company_name}}</td>
+                                <td>{{j.job_title}}</td>
+                                <td>{{j.job_type}}</td>
+                                <td>{{j.vacancy}}</td>
+                                <td>{{j.industry}}</td>
+                                <td class="project-actions">
+                                    <a class="btn btn-primary btn-sm" href="{% url 'job_view' j.id %}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
+                                  </td>
+                                  <td class="project-actions">
+                                    <a class="btn btn-danger btn-sm" href="{% url 'admin_job_delete' j.id %}">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                  </td>
+                    
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
